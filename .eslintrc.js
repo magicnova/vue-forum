@@ -1,18 +1,16 @@
-// https://eslint.org/docs/user-guide/configuring
-
 module.exports = {
 	root: true,
-	parser: 'babel-eslint',
 	parserOptions: {
+		parser: 'babel-eslint',
 		sourceType: 'module'
 	},
 	env: {
 		browser: true
 	},
 	// https://github.com/standard/standard/blob/master/docs/RULES-en.md
-	extends: 'standard',
+	extends: ['eslint:recommended', 'plugin:vue/recommended'],
 	// required to lint *.vue files
-	plugins: ['html'],
+	//plugins: ['html'],
 	// add your custom rules here
 	rules: {
 		// allow paren-less arrow functions
@@ -25,6 +23,17 @@ module.exports = {
 		'no-extra-semi': 1,
 		indent: ['error', 'tab'],
 		'no-tabs': 0,
-		'space-before-function-paren': 0
+		'space-before-function-paren': 0,
+		'vue/attribute-hyphenation': 0,
+		'vue/html-indent': [
+			'error',
+			'tab',
+			{
+				attribute: 2,
+				closeBracket: 0,
+				ignores: []
+			}
+		],
+		'vue/max-attributes-per-line': 0
 	}
 }
