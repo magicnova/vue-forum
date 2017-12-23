@@ -2,7 +2,9 @@
     <div class="thread">
         <div>
             <p>
-                <a href="thread.html">{{thread.title}}</a>
+                <router-link :to="{name:'ThreadShow',params:{id:thread['.key']}}">
+                    {{thread.title}}
+                </router-link>
             </p>
             <p class="text-faded text-xsmall">
                 By
@@ -13,13 +15,6 @@
             <p class="replies-count">
                 {{repliesCount}} replies
             </p>
-
-            <!--        <div>
-                <p class="text-xsmall">
-                    <a href="profile.html">Bruce Wayne</a>
-                </p>
-                <p class="text-xsmall text-faded">2 hours ago</p>
-            </div>-->
         </div>
     </div>
 </template>
