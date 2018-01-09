@@ -8,7 +8,8 @@
             </p>
             <p class="text-faded text-xsmall">
                 By
-                <a href="profile.html">{{user}}</a>, {{thread.publishedAt}}.
+                <a href="profile.html">{{user}}</a>,
+                <AppDate :timestamp="thread.publishedAt" />.
             </p>
         </div>
         <div class="activity">
@@ -21,7 +22,12 @@
 
 <script>
 import sourceData from '@/data'
+import AppDate from '@/components/commons/AppDate'
+
 export default {
+	components: {
+		AppDate
+	},
 	props: {
 		thread: {
 			required: true,

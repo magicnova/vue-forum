@@ -15,15 +15,15 @@
                     {{ post.text }}
                 </div>
             </div>
-            <div class="post-date text-faded" :title="post.publishedAt | formatDate">
-                {{ post.publishedAt | diffDate}}
+            <div class="post-date text-faded">
+                <AppDate :timestamp="post.publishedAt" />
             </div>
         </div>
     </div>
 </template>
 <script>
 import sourceData from '@/data'
-import moment from 'moment'
+import AppDate from '@/components/commons/AppDate'
 export default {
 	props: {
 		post: {
@@ -31,23 +31,15 @@ export default {
 			type: Object
 		}
 	},
+	components: {
+		AppDate
+	},
 	computed: {
 		user() {
 			return sourceData.users[this.post.userId]
 		},
 		userPostsCount() {
 			return Object.keys(this.user.posts).length
-		}
-	},
-	filters: {
-		formatDate(date) {
-			return moment
-				.unix(date)
-				.locale('es')
-				.format('MMMM Do YYYY, h:mm:ss a')
-		},
-		diffDate(date) {
-			return moment.unix(date).fromNow()
 		}
 	}
 }
