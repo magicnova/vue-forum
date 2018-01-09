@@ -1,6 +1,11 @@
 <template>
 	<div class="col-large push-top">
 		<h1>{{ thread.title }}</h1>
+		<p>By
+			<a href="#" class="link-unstyled">Robin</a>
+			<AppDate :timestamp="thread.publishedAt" />
+			<span style="float:left;margin-top:2px" class="hide-mobile text-faded text-small">3 replies by 3 contributors</span>
+		</p>
 		<PostList :posts="posts" />
 		<PostEditor @save-post-event="parentSavePost" :threadId="id" />
 	</div>

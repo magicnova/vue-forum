@@ -23,16 +23,12 @@
 </template>
 <script>
 import sourceData from '@/data'
-import AppDate from '@/components/commons/AppDate'
 export default {
 	props: {
 		post: {
 			required: true,
 			type: Object
 		}
-	},
-	components: {
-		AppDate
 	},
 	computed: {
 		user() {

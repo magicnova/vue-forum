@@ -22,12 +22,8 @@
 
 <script>
 import sourceData from '@/data'
-import AppDate from '@/components/commons/AppDate'
 
 export default {
-	components: {
-		AppDate
-	},
 	props: {
 		thread: {
 			required: true,
