@@ -1,15 +1,18 @@
 <template>
-    <div class="col-large push-top">
-        <h1>{{ thread.title }}</h1>
-        <PostList :posts="posts" />
-    </div>
+	<div class="col-large push-top">
+		<h1>{{ thread.title }}</h1>
+		<PostList :posts="posts" />
+		<PostEditor @save-post-event="parentSavePost" :threadId="id" />
+	</div>
 </template>
 <script>
 import sourceData from '@/data'
 import PostList from '@/components/PostList'
+import PostEditor from '@/components/PostEditor'
 export default {
 	components: {
-		PostList
+		PostList,
+		PostEditor
 	},
 	props: {
 		id: {
@@ -20,7 +23,8 @@ export default {
 
 	data() {
 		return {
-			thread: sourceData.threads[this.id]
+			thread: sourceData.threads[this.id],
+			newPostText: ''
 		}
 	},
 	computed: {
@@ -29,6 +33,15 @@ export default {
 			return Object.values(sourceData.posts).filter(post =>
 				postIds.includes(post['.key'])
 			)
+		}
+	},
+	methods: {
+		parentSavePost(eventData) {
+			const post = eventData.post
+			const postId = eventData.post['.key']
+			this.$set(sourceData.posts, postId, post)
+			this.$set(this.thread.posts, postId, postId)
+			this.$set(sourceData.users[post.userId].posts, postId, postId)
 		}
 	}
 }
