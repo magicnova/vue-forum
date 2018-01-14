@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import PageHome from '@/pages/PageHome'
 import PageThreadShow from '@/pages/PageThreadShow'
 import PageNotFound from '@/pages/PageNotFound'
+import PageForum from '@/pages/PageForum'
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +23,12 @@ export default new Router({
 			path: '*',
 			name: 'NotFound',
 			component: PageNotFound
+		},
+		{
+			path:'/forum/:id',
+			component:PageForum,
+			name:'PageForum',
+			props:true
 		}
 	],
 	mode: 'history'
